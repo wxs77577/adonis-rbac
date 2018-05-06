@@ -1,0 +1,22 @@
+{
+  "name": "adonis-rbac",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [
+    "adonisjs",
+    "rbac",
+    "adonis rbac",
+    "adonis-framework"
+  ],
+  "author": "JohnnyWu <wu-xuesong@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@adonisjs/sink": "^1.0.13",
+    "japa": "^1.0.5",
+    "japa-cli": "^1.0.1",
+    "standard": "^10.0.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
+}
