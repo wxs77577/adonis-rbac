@@ -4,36 +4,19 @@ const _ = require('lodash')
 module.exports = class Rbac {
 
   register(Model, options) {
-
-    const { roles, permissions } = Config.get('rbac', {})
-    const flatten = (name) => {
-      let ret = roles[name].map((v, k) => {
-        if (String(v).includes('role:')) {
-          const subRole = v.split(':').pop()
-          v = flatten(subRole)
-        }
-        return v
-      })
-
-      return _.flatMap(ret)
-
-    }
-
-    _.mapValues(roles, (perms, name) => {
-      roles[name] = flatten(name)
-    })
-
+    const that = this
     Model.prototype.getPermissions = function () {
+      const roles = that.fetchRoles()
       if (!this.roles) {
         return []
       }
-      
-      let myRoles =  []
-      
+
+      let myRoles = []
+
       if (_.isArray(this.roles)) {
         myRoles = this.roles
       }
-      
+
       if (_.isString(this.roles)) {
         myRoles = this.roles.split(',')
       }
@@ -63,8 +46,29 @@ module.exports = class Rbac {
           return true
         }
       }
-      console.log('rbac:', permission, false)
+      console.error('rbac:', permission, perms, false)
       return false
     }
+  }
+
+  fetchRoles() {
+    const { roles, permissions } = Config.get('rbac', {})
+    const flatten = (name) => {
+      let ret = roles[name].map((v, k) => {
+        if (String(v).includes('role:')) {
+          const subRole = v.split(':').pop()
+          v = flatten(subRole)
+        }
+        return v
+      })
+
+      return _.flatMap(ret)
+
+    }
+
+    _.mapValues(roles, (perms, name) => {
+      roles[name] = flatten(name)
+    })
+    return roles
   }
 }

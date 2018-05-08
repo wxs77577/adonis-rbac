@@ -1,6 +1,6 @@
 {
   "name": "adonis-rbac",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "index.js",
   "keywords": [
     "adonisjs",
@@ -18,5 +18,9 @@
   },
   "dependencies": {
     "lodash": "^4.17.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wxs77577/adonis-rbac.git"
   }
 }
