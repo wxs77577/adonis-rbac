@@ -11,6 +11,7 @@
   "author": "JohnnyWu <wu-xuesong@qq.com>",
   "license": "MIT",
   "devDependencies": {
+    "@adonisjs/fold": "^4.0.8",
     "@adonisjs/sink": "^1.0.13",
     "japa": "^1.0.5",
     "japa-cli": "^1.0.1",
