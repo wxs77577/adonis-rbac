@@ -1,5 +1,5 @@
 
-const { ServiceProvider } = require.main.require('@adonisjs/fold')
+const { ServiceProvider } = require('@adonisjs/fold')
 
 module.exports = class RbacProvider extends ServiceProvider {
 
